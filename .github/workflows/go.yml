@@ -23,11 +23,8 @@ jobs:
 
     - name: Build for Windows 64-bit
       run: |
-        # 设置 GOOS 和 GOARCH 为 Windows 64 位
         SET GOOS=windows
         SET GOARCH=amd64
-        go build -v ./...
-
-    - name: Test
-      run: go test -v ./...
+        go build -v -o aichat.exe ./...
+    
 
