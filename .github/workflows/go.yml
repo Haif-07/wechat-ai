@@ -8,7 +8,10 @@ on:
     branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
-
+  release:
+    types: [创建]
+permissions: # 添加
+  contents: write # 添加
 jobs:
   build:
     runs-on: windows-latest  # 指定在 Windows 环境下运行
