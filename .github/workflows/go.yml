@@ -25,6 +25,6 @@ jobs:
       run: |
         SET GOOS=windows
         SET GOARCH=amd64
-        go build -v -o aichat.exe ./...
+        go build -v -o aichat.exe 
     
 
