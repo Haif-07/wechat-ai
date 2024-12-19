@@ -27,11 +27,20 @@ jobs:
         SET GOARCH=amd64
         go build -v -o aichat.exe 
 
+    - name: Create GitHub Release Tag
+      id: create_release_tag
+      run: |
+        # 获取当前日期作为版本号，或者使用 Git 版本标签
+        VERSION=$(date +'%Y%m%d%H%M%S')  # 使用日期时间生成版本号（例如：20241219123456）
+        echo "VERSION=$VERSION" >> $GITHUB_ENV  # 设置环境变量供后续使用
+        git tag "v$VERSION"  # 创建 Git 标签
+        git push origin "v$VERSION"  # 推送 Git 标签到远程仓库
+
     - name: Upload .exe file to GitHub Releases
       id: upload-release
       uses: softprops/action-gh-release@v1  # 使用 GitHub Actions 发布工具
       with:
-        文件: aichat.exe  # 上传的文件
+        tag_name: v${{ env.VERSION }}  # 使用刚刚创建的标签
+        files: aichat.exe  # 上传的文件
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # 使用 GitHub 提供的 Token
-
