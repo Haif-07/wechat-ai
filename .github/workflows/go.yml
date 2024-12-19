@@ -26,5 +26,12 @@ jobs:
         SET GOOS=windows
         SET GOARCH=amd64
         go build -v -o aichat.exe 
-    
+
+    - name: Upload .exe file to GitHub Releases
+      id: upload-release
+      uses: softprops/action-gh-release@v1  # 使用 GitHub Actions 发布工具
+      with:
+        文件: aichat.exe  # 上传的文件
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # 使用 GitHub 提供的 Token
 
