@@ -1,7 +1,7 @@
 openai:
-  provider: "deepseek"
+  provider: "deepseek"   # "openai、azure、deepseek、zhipu"
   token: ""
-  model: "deepseek-chat"
+  model: "deepseek-chat" 
 wechat:
   login: "desktop"  # "web" or "desktop"
   group: "测试群,测试群2"  
